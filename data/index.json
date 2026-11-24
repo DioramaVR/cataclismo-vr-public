@@ -65,5 +65,11 @@
       "text": "In some levels the mist can shimmer or flicker in the headset.",
       "since": "0.1.3"
     }
-  ]
+  ],
+  "data": {
+    "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/data-1/cataclismo-vr-data.zip",
+    "sha256": "8502683242341596D71BC4AA671BF50CCED91017560B390DFAE60AF770E21152",
+    "size": 1957,
+    "date": "2026-11-24"
+  }
 }
