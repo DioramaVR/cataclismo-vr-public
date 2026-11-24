@@ -71,5 +71,82 @@
     "sha256": "8502683242341596D71BC4AA671BF50CCED91017560B390DFAE60AF770E21152",
     "size": 1957,
     "date": "2026-11-24"
+  },
+  "assets": {
+    "release": "assets-1",
+    "date": "2026-11-24",
+    "files": {
+      "fortress-overview.jpg": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/fortress-overview.jpg",
+        "sha256": "618a2ad2cf62096687908c6b4f959a1fcdd1692f9d87422ba67d1bfa4c6b0911",
+        "size": 183024
+      },
+      "turntable-720.webm": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/turntable-720.webm",
+        "sha256": "84c1ba4c06e5788326711740ec68f51f98988f6fc1c3deb2e26e9abd0e2043de",
+        "size": 10762428
+      },
+      "turntable-poster.jpg": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/turntable-poster.jpg",
+        "sha256": "a38af6f65f761a1b1d24fd992d6b4e050db4ae468996077f577799981a047a59",
+        "size": 53027
+      },
+      "turntable-720.mp4": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/turntable-720.mp4",
+        "sha256": "306b69aca77cbea03fedb149f81b1024c1e343f287303f7424f12e80de29e4a9",
+        "size": 4747460
+      },
+      "forest-ruins.jpg": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/forest-ruins.jpg",
+        "sha256": "17656f2708162b706b30a27cc3eb8faa05c2a2f0e9bd069df22c287b163c27c3",
+        "size": 206544
+      },
+      "archers-up-close.jpg": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/archers-up-close.jpg",
+        "sha256": "6d2e37c8a7889d053a50efb6c6b3262cea88b4fbf99d375a243191ebf91f29a2",
+        "size": 169635
+      },
+      "sunset-vista.jpg": {
+        "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/assets-1/sunset-vista.jpg",
+        "sha256": "3aa8d9a4543cfa6ae0a4a815b7ff80323937da8be08823f2aad5887c2a3f4dd2",
+        "size": 104831
+      }
+    },
+    "media": [
+      {
+        "file": "fortress-overview.jpg",
+        "kind": "image",
+        "role": "hero",
+        "alt": "Looking down in VR on a fortress with green-roofed towers and a glowing core, in a valley of dark cliffs under a streaked sky."
+      },
+      {
+        "file": "turntable-720.webm",
+        "kind": "video",
+        "role": "turntable",
+        "alt": "Cataclismo in dots: the fortress on its plateau, ringed by golden trees, turning.",
+        "poster": "turntable-poster.jpg",
+        "sources": [
+          "turntable-720.mp4"
+        ]
+      },
+      {
+        "file": "forest-ruins.jpg",
+        "kind": "image",
+        "role": "gallery",
+        "alt": "Two archers by a stone ruin in a dark pine forest on a cliff top, seen in VR."
+      },
+      {
+        "file": "archers-up-close.jpg",
+        "kind": "image",
+        "role": "gallery",
+        "alt": "Up close in the headset: archers with drawn bows on the grass, close enough to see their feathered hats."
+      },
+      {
+        "file": "sunset-vista.jpg",
+        "kind": "image",
+        "role": "gallery",
+        "alt": "Dusk over the valley: golden streaked clouds above black peaks, with the lights of the fortress far below."
+      }
+    ]
   }
 }
