@@ -1,0 +1,183 @@
+{
+  "id": "cataclismo-vr",
+  "name": "Cataclismo VR",
+  "game": "Cataclismo",
+  "appid": 1422440,
+  "owners": {
+    "developer": "Digital Sun",
+    "publisher": "Hooded Horse"
+  },
+  "credits": [
+    {
+      "name": "Diorama VR core (dvr-unity-core)",
+      "for": "The VR rig, menus and controls",
+      "license": "MIT",
+      "url": "https://github.com/DioramaVR/dvr-unity-core-public"
+    },
+    {
+      "name": "BepInEx",
+      "for": "Loads the mod into the game",
+      "license": "LGPL-2.1",
+      "url": "https://github.com/BepInEx/BepInEx"
+    },
+    {
+      "name": "Il2CppInterop",
+      "for": "Lets the mod talk to the game code",
+      "license": "LGPL-3.0",
+      "url": "https://github.com/BepInEx/Il2CppInterop"
+    },
+    {
+      "name": "HarmonyX",
+      "for": "Patches the game code",
+      "license": "MIT",
+      "url": "https://github.com/BepInEx/HarmonyX"
+    },
+    {
+      "name": "OpenVR SDK",
+      "for": "Talks to SteamVR",
+      "license": "BSD-3-Clause",
+      "url": "https://github.com/ValveSoftware/openvr"
+    },
+    {
+      "name": "Lucide icons",
+      "for": "Menu icons",
+      "license": "ISC",
+      "url": "https://github.com/lucide-icons/lucide"
+    }
+  ],
+  "line": "A fortress at your fingertips, and horrors at the gate.",
+  "firstLaunch": "It takes a few minutes, with a blank window, while BepInEx reads the game. It needs the internet that first time. Keep your VPN off. The same wait comes back once after each update of the game. On the Steam Frame, start it from your library: it opens in VR.",
+  "needToKnow": [
+    "The tutorial asks for keys you don't have in VR. The sticks press the same keys, or switch on the Tutorial button bar (VR menu, Game UI page, Hotkey bars) for W A S D, Q, E and zoom.",
+    "Diorama is the only table mode in this version: Turntable is switched off for Cataclismo for now."
+  ],
+  "tutorial": [
+    {
+      "title": "Getting started",
+      "text": "Load a save or start a level as usual. The map appears as a diorama on a table in front of you, and the game's menus float on a panel behind it. Open the VR menu to move the panel, or to split it into windows on the Game UI page. On the Steam Frame, start it from your library: it opens in VR.",
+      "controls": []
+    },
+    {
+      "title": "Point and click",
+      "text": "Your right hand is a laser pointer, like the mouse: build, select and give orders as you would with it. Drag with the trigger held to box-select. These controls are for right-handed play: Left-handed (in the settings here, or on the VR menu's Controls page) swaps the hands.",
+      "controls": [
+        {
+          "input": "Right trigger",
+          "action": "Click (hold and drag to select several)"
+        },
+        {
+          "input": "B",
+          "action": "Right click: cancel or deselect"
+        },
+        {
+          "input": "A",
+          "action": "Middle mouse button"
+        }
+      ]
+    },
+    {
+      "title": "Move the table",
+      "text": "Reach out and grab it. The table follows the game's camera: turning and zooming turn and zoom the game's view, and the table goes with it.",
+      "controls": [
+        {
+          "input": "Either grip",
+          "action": "Move the table"
+        },
+        {
+          "input": "Both grips",
+          "action": "Scale and turn it"
+        },
+        {
+          "input": "Right stick",
+          "action": "Move across the map"
+        },
+        {
+          "input": "Left stick left / right",
+          "action": "Turn the view"
+        },
+        {
+          "input": "Left stick up / down",
+          "action": "Zoom"
+        }
+      ]
+    },
+    {
+      "title": "The VR menu",
+      "text": "Settings, the controls (you can rebind them) and where the game's windows sit are all in the VR menu. Its Help page answers questions about Cataclismo in VR.",
+      "controls": [
+        {
+          "input": "Both grips + both triggers",
+          "action": "Open the VR menu"
+        },
+        {
+          "input": "X",
+          "action": "Pause / play"
+        },
+        {
+          "input": "Y",
+          "action": "Back / the game's menu"
+        }
+      ]
+    },
+    {
+      "title": "The tutorial's keys",
+      "text": "The tutorial waits for keys like W A S D, Q and E. The sticks press them, or switch on the Tutorial button bar under Hotkey bars on the VR menu's Game UI page: point the laser at a key and pull the trigger. The Play bar has pause, fast, build and camera reset.",
+      "controls": []
+    },
+    {
+      "title": "If something goes wrong",
+      "text": "The first start takes a few minutes with a blank window; leave it be. If it crashes or looks wrong, the file BepInEx\\LogOutput.log in the game folder says why. Uninstalling here puts the game back to normal, and your saves are never touched.",
+      "controls": []
+    }
+  ],
+  "install": {
+    "exe": "Cataclismo.exe",
+    "launchArgs": "-force-d3d11",
+    "vrLaunch": {
+      "args": "-dvr-vr"
+    },
+    "steamAppIdFile": true,
+    "loaderConfig": {
+      "Logging.Console": {
+        "Enabled": false
+      },
+      "Logging": {
+        "UnityLogListening": false
+      }
+    }
+  },
+  "settings": {
+    "shared": {
+      "leftHanded": {
+        "section": "Controls",
+        "key": "LeftHanded"
+      },
+      "eyeResolution": {
+        "section": "Dvr.Graphics",
+        "key": "EyeResolution"
+      }
+    },
+    "options": [
+      {
+        "id": "desktopView",
+        "label": "Keep the monitor view",
+        "help": "Draw the game on the monitor too while you're in VR. Costs frame rate.",
+        "type": "bool",
+        "default": false,
+        "cfg": {
+          "section": "Dvr.Graphics",
+          "key": "DesktopView"
+        }
+      }
+    ]
+  },
+  "testedBuildIds": [
+    "26567702"
+  ],
+  "media": [],
+  "mediaGaps": [
+    "A hero picture of a fortress on the table in VR.",
+    "A headset view while building, and a wave attacking the walls.",
+    "A turntable capture of a fortress."
+  ]
+}

@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>CataVr</AssemblyName>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DvrRuntime>IL2CPP</DvrRuntime>
+    <DvrPipeline>URP</DvrPipeline>
+  </PropertyGroup>
+  <!-- Shared Diorama VR core (session, hands, pose, OpenVR, UI kit), compiled in as source. -->
+  <Import Project="$(DvrCoreDir)DvrUnityCore.props" />
+
+  <ItemGroup>
+    <Reference Include="$(BepInExDir)\core\BepInEx.Core.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\core\BepInEx.Unity.IL2CPP.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\core\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\core\Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\core\0Harmony.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\core\MonoMod.RuntimeDetour.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\InControl.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\Sirenix.Serialization.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.InputLegacyModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\Unity.RenderPipelines.Core.Runtime.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\Unity.RenderPipelines.Universal.Runtime.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.ImageConversionModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.ScreenCaptureModule.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\UnityEngine.AssetBundleModule.dll" Private="false" />
+    <!-- The diorama capture's freeze (DOTween's time scale) and hide (the game's Shapes markers). -->
+    <Reference Include="$(BepInExDir)\interop\DOTween.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\interop\ShapesRuntime.dll" Private="false" />
+  </ItemGroup>
+
+  <!-- The mod's version is the repo's VERSION file (one line, X.Y.Z): written into a generated
+       constant so the BepInPlugin attribute and the log report the real version. -->
+  <PropertyGroup>
+    <DvrModVersion>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)..\..\VERSION').Trim())</DvrModVersion>
+    <Version>$(DvrModVersion)</Version>
+  </PropertyGroup>
+  <Target Name="DvrWriteModVersion" BeforeTargets="CoreCompile">
+    <!-- Set here, not above: IntermediateOutputPath is only known once the SDK's targets are read. -->
+    <PropertyGroup>
+      <DvrModVersionFile>$(IntermediateOutputPath)ModVersion.g.cs</DvrModVersionFile>
+    </PropertyGroup>
+    <Error Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch(&apos;$(DvrModVersion)&apos;, &apos;^[0-9]+\.[0-9]+\.[0-9]+$&apos;))" Text="VERSION must be one X.Y.Z line, but it says &apos;$(DvrModVersion)&apos;" />
+    <WriteLinesToFile File="$(DvrModVersionFile)" Lines="namespace CataVr { static class ModVersion { public const string Value = &quot;$(DvrModVersion)&quot;%3B } }" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <ItemGroup>
+      <Compile Include="$(DvrModVersionFile)" />
+      <FileWrites Include="$(DvrModVersionFile)" />
+    </ItemGroup>
+  </Target>
+
+  <!-- Copy the built plugin straight into the game's plugin folder (-p:NoDeploy=true to only compile). -->
+  <Target Name="DeployToGame" AfterTargets="Build" Condition="'$(NoDeploy)' != 'true'">
+    <MakeDir Directories="$(BepInExDir)\plugins\CataVr" />
+    <Copy SourceFiles="$(TargetPath);$(MSBuildThisFileDirectory)..\..\lib\openvr_api.dll" DestinationFolder="$(BepInExDir)\plugins\CataVr" SkipUnchangedFiles="true" />
+    <!-- The core menu's fonts and icons (DvrUnityCore.props puts them in the build output). -->
+    <ItemGroup>
+      <CoreMenuFonts Include="$(TargetDir)fonts\*" />
+      <CoreMenuIcons Include="$(TargetDir)icons\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(CoreMenuFonts)" DestinationFolder="$(BepInExDir)\plugins\CataVr\fonts" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CoreMenuIcons)" DestinationFolder="$(BepInExDir)\plugins\CataVr\icons" SkipUnchangedFiles="true" />
+    <!-- The shader bundle (tools/build-shaders.sh): Turntable's cylinder mask. -->
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)..\..\lib\catavr-shaders" DestinationFolder="$(BepInExDir)\plugins\CataVr" SkipUnchangedFiles="true" Condition="Exists('$(MSBuildThisFileDirectory)..\..\lib\catavr-shaders')" />
+  </Target>
+</Project>

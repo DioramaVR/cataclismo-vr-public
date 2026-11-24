@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "id": "cataclismo-vr",
+  "name": "Cataclismo VR",
+  "game": "Cataclismo",
+  "appid": 1422440,
+  "description": "A fortress at your fingertips, and horrors at the gate.",
+  "releases": [
+    {
+      "version": "0.1.3",
+      "maturity": "open-beta",
+      "date": "2026-11-24",
+      "coreVersion": "0.1.4",
+      "minAppVersion": "0.2.0",
+      "testedBuildIds": [
+        "26567702"
+      ],
+      "notes": "Out now in open beta. Download it in the DioramaVR installer.",
+      "url": "https://github.com/DioramaVR/cataclismo-vr-public/releases/download/v0.1.3/cataclismo-vr-0.1.3.zip",
+      "sha256": "45135BED4F1042B0354409B2276201D2A9326AFC16CF81626F2A1443C04ECF88",
+      "size": 36439508,
+      "source": {
+        "commit": "ab65b6553ec3bf209e64376a30fa87a2717e9de7",
+        "coreRepo": "DioramaVR/dvr-unity-core-public",
+        "coreCommit": "3ab18060f316a19001c373d80bb46864b9f7716e",
+        "coreFrom": "tag v0.1.4",
+        "actionsCommit": "4e76a1563ee7a492d9549453ab4acfe78d13547c",
+        "builtAt": "2026-11-24T16:12:35.628Z"
+      }
+    }
+  ],
+  "knownIssues": [
+    {
+      "id": "no-turntable",
+      "title": "No Turntable mode yet",
+      "severity": "minor",
+      "text": "Cataclismo only has the Diorama table for now. Turntable didn't draw the world properly here and is switched off until it does.",
+      "since": "0.1.0"
+    },
+    {
+      "id": "place-unit-marker",
+      "title": "The 'place a unit here' marker doesn't show on the table",
+      "severity": "minor",
+      "text": "The marker the game shows where units will go appears on the monitor but not on the table. Orders still work.",
+      "since": "0.1.0"
+    },
+    {
+      "id": "grab-off-map",
+      "title": "Dragging the table far can take the view off the map",
+      "severity": "minor",
+      "text": "Grabbing the table and pulling it a long way can move the game's camera past the edge of the map. Move back with the right stick.",
+      "since": "0.1.0"
+    },
+    {
+      "id": "frame-experimental",
+      "title": "Steam Frame support is experimental",
+      "severity": "minor",
+      "text": "Playing on the Steam Frame is new and has had little testing. If it doesn't open in VR from the Frame's library, open the DioramaVR installer and press \"Fix Steam Frame launch\".",
+      "since": "0.1.1"
+    },
+    {
+      "id": "mist-shimmer",
+      "title": "The mist can shimmer in VR",
+      "severity": "minor",
+      "text": "In some levels the mist can shimmer or flicker in the headset.",
+      "since": "0.1.3"
+    }
+  ]
+}

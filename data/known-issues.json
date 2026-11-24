@@ -1,0 +1,37 @@
+[
+  {
+    "id": "no-turntable",
+    "title": "No Turntable mode yet",
+    "severity": "minor",
+    "text": "Cataclismo only has the Diorama table for now. Turntable didn't draw the world properly here and is switched off until it does.",
+    "since": "0.1.0"
+  },
+  {
+    "id": "place-unit-marker",
+    "title": "The 'place a unit here' marker doesn't show on the table",
+    "severity": "minor",
+    "text": "The marker the game shows where units will go appears on the monitor but not on the table. Orders still work.",
+    "since": "0.1.0"
+  },
+  {
+    "id": "grab-off-map",
+    "title": "Dragging the table far can take the view off the map",
+    "severity": "minor",
+    "text": "Grabbing the table and pulling it a long way can move the game's camera past the edge of the map. Move back with the right stick.",
+    "since": "0.1.0"
+  },
+  {
+    "id": "frame-experimental",
+    "title": "Steam Frame support is experimental",
+    "severity": "minor",
+    "text": "Playing on the Steam Frame is new and has had little testing. If it doesn't open in VR from the Frame's library, open the DioramaVR installer and press \"Fix Steam Frame launch\".",
+    "since": "0.1.1"
+  },
+  {
+    "id": "mist-shimmer",
+    "title": "The mist can shimmer in VR",
+    "severity": "minor",
+    "text": "In some levels the mist can shimmer or flicker in the headset.",
+    "since": "0.1.3"
+  }
+]
